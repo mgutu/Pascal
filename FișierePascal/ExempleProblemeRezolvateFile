@@ -1,0 +1,65 @@
+1.FILE, afișarea în consolă
+program CITafECRAN;
+uses crt;
+var f:text;    x:real;
+begin
+clrscr;
+   assign(f,'t.text');   reset(f);
+while  not  eof(f) do
+  begin  while  not  eoln(f)  do
+    begin  read (f,x);write(x:6:2);end;
+  readln(f);writeln;writeln(' ');  end;
+close(f);readln;readkey;end.
+
+
+2. Citește din fișierul  r.txt și scrie rezultatul în r.out
+Program cetire; 
+uses crt;
+var f,g:text;    x:string;
+begin
+clrscr;
+   assign(f,'r.txt'); assign(g,'r.out');
+begin reset(f);
+   while not EOF(f) do
+begin
+   while not EOLN(f) do
+   read (f,x); rewrite(g);
+   write(g,x);      end;close(f);close(g);readln;readln;end;end.
+   
+
+3. Citește din fișierul suma.in numerele a și b, le însumează și rezultatul îl afișează în fișierul de ieșire suma.out
+
+program CITfileAFISout; 
+uses crt;
+var f1,f2:text;a,b,c:integer;
+begin
+clrscr;
+assign(f1,'suma.in');reset(f1);
+while not eof(f1) do
+begin
+readln(f1,a);readln(f1,b);end;
+c:=a+b;
+assign(f2,'suma.out');
+rewrite(f2);
+write(f2,c);
+close(f1);close(f2);readln;end.
+
+4.LATURILE TRIUNGHIURILOR, TIPURILE TRIUNGHIURILOR ISOSCEL,ECHILATERAL,DREPTUNGHIC
+program TRIUNGHI;
+uses crt;
+var a,b,c:real;f,g:text;i:byte;
+ assign(f,'in.txt');rewrite(f);
+ for i:=1 to 10 do
+    begin
+     write('dati a,b si c:');readln(a,b,c);
+     writeln(f,a:5:2,'  ',b:5:2,'  ',c:5:2)
+    end;
+ close(f);reset(f);assign(g,'out.txt');rewrite(g);
+ while not  eof(f) do
+       begin
+         readln(f,a,b,c);
+         if (a=b) and ((b=c) then  writeln (g,'echilateral')
+         else if (a=b) or (b=c) then writeln(g,'isoscel')
+              else if (a*a=b*b+c*c) or (b*b=c*c+a*a) or (c*c=a*a+b*b)
+              then writeln(g,'dreptunghic')
+                else writeln (g,'oarecare') end;close(f);close(g);end.
