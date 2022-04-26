@@ -4,7 +4,7 @@ uses crt;
 var f:text;    x:real;
 begin
 clrscr;
-   assign(f,'t.text');   reset(f);
+   assign(f,'t.txt');   reset(f);
 while  not  eof(f) do
   begin  while  not  eoln(f)  do
     begin  read (f,x);write(x:6:2);end;
